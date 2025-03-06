@@ -15,8 +15,7 @@ pipeline {
                     node --version
                     npm --version
                    
- docker run --dns 8.8.8.8 --dns 8.8.4.4 -v $(pwd):/app -w /app node:18-alpine npm install --verbose
-                  
+ npm install react-scripts --save-dev
 
 
                     npm run build
