@@ -15,7 +15,7 @@ pipeline {
                     node --version
                     npm --version
                    
- npm install --verbose
+ docker run --dns 8.8.8.8 --dns 8.8.4.4 -v $(pwd):/app -w /app node:18-alpine npm install --verbose
                   
 
 
