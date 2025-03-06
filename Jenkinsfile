@@ -15,7 +15,7 @@ pipeline {
                     node --version
                     npm --version
                    
-npm install react-scripts
+ npm install --verbose
                   
 
 
