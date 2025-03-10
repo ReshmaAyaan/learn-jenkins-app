@@ -48,12 +48,10 @@ npm install
              steps{
             echo "test "
             sh '''
-             npm install serve
-             serve -s build
-             sleep 5
-
-       
-            npx playwright test
+            npm install serve
+                    node_modules/.bin/serve -s build &
+                    sleep 10
+                    npx playwright test
              '''
             }
          }
