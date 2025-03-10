@@ -50,6 +50,7 @@ npm install
             sh '''
              npm install -g serve
              serve -s build
+             sleep 5
 
        
             npx playwright test
