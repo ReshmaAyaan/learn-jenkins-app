@@ -48,7 +48,7 @@ npm install
              steps{
             echo "test "
             sh '''
-             npm install -g serve
+             npm install serve
              serve -s build
              sleep 5
 
