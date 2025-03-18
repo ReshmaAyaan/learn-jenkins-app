@@ -21,22 +21,22 @@ pipeline {
 //                     ls -la
 //                 '''
 //              }}
-//              stage('Test')
-//      {
-//          agent {
-//                docker{
-//                    image 'node:18-alpine'
-//                    reuseNode true
-//             }
-//             }
-//             steps{
-//             echo "test "
-//         sh '''
-//             test -f build/index.html
-//             npm test
-//             '''
-//             }
-//         }
+             stage('Test')
+     {
+         agent {
+               docker{
+                   image 'node:18-alpine'
+                   reuseNode true
+            }
+            }
+            steps{
+            echo "test "
+        sh '''
+            test -f build/index.html
+            npm test
+            '''
+            }
+        }
         stage('E2E tset')
         {
           agent {
