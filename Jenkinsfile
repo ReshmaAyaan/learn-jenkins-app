@@ -21,25 +21,36 @@ pipeline {
 //                     ls -la
 //                 '''
 //              }}
-             stage('Test')
-     {
-         agent {
+        stage('Test')
+        {
+            parallel
+        {
+            stage('UnitTest')
+             {
+             agent {
                docker{
                    image 'node:18-alpine'
                    reuseNode true
-            }
-            }
+                     }
+                    }
             steps{
             echo "test "
-        sh '''
+             sh '''
             test -f build/index.html
             npm test
             '''
-            }
+              }
+               post 
+     {
+         always {
+              junit 'jest-results/junit.xml'
+             
         }
-        stage('E2E tset')
-        {
-          agent {
+            }
+
+            stage('E2E tset')
+            {
+               agent {
                docker{
                    image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
                   reuseNode true
@@ -54,15 +65,21 @@ pipeline {
                     npx playwright test --reporter=html  
              '''
             }
-         }
-
-    }
-     post 
+             post 
      {
          always {
-              junit 'jest-results/junit.xml'
+             
               publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, icon: '', keepAll: false, reportDir: 'playwright-report', reportFiles: 'index.html', reportName: 'playwright-HTML Report', reportTitles: '', useWrapperFileDirectly: true])
  
         }
+         }
+         
+            }
+        }
+             
+        
+
+    }
+    
 }
 }
