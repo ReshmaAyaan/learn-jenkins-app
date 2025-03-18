@@ -47,6 +47,7 @@ pipeline {
              
         }
             }
+             }
 
             stage('E2E tset')
             {
