@@ -99,6 +99,7 @@ pipeline {
                     npm install netlify-cli
                     node_modules/.bin/netlify --version
                     echo "deployesited_id :$NETLIFY_SITE_CODE"
+                    node_modules/.bin/netlify status
                 '''
             }
         }
