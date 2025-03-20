@@ -125,7 +125,7 @@ pipeline {
             }
 
             environment {
-                CI_ENVIRONMENT_URL = 'PUT YOUR NETLIFY SITE URL HERE'
+                CI_ENVIRONMENT_URL = 'https://musical-hamster-3a4a51.netlify.app'
             }
 
             steps {
